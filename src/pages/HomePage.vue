@@ -154,9 +154,14 @@
         </el-button>
         <el-button
           v-if="
-            ['azure', 'official', 'gemini', 'ollama', 'groq'].includes(
-              settingForm.api
-            )
+            [
+              'azure',
+              'official',
+              'gemini',
+              'ollama',
+              'groq',
+              'deepseek'
+            ].includes(settingForm.api)
           "
           class="api-button"
           type="success"
@@ -378,12 +383,7 @@ async function template(taskType: keyof typeof buildInPrompt | 'custom') {
   let systemMessage
   let userMessage = ''
   const getSeletedText = async () => {
-    return Word.run(async context => {
-      const range = context.document.getSelection()
-      range.load('text')
-      await context.sync()
-      return range.text
-    })
+    return window.getSelection()?.toString() || ''
   }
   const selectedText = await getSeletedText()
   if (taskType === 'custom') {
@@ -546,6 +546,35 @@ async function template(taskType: keyof typeof buildInPrompt | 'custom') {
       loading,
       temperature: settingForm.value.ollamaTemperature
     })
+  } else if (
+    settingForm.value.api === 'deepseek' &&
+    settingForm.value.deepseekAPIKey
+  ) {
+    const config = API.deepseek.setConfig(
+      settingForm.value.deepseekAPIKey,
+      settingForm.value.deepseekBasePath
+    )
+    historyDialog.value = [
+      {
+        role: 'system',
+        content: systemMessage
+      },
+      {
+        role: 'user',
+        content: userMessage
+      }
+    ]
+    await API.deepseek.createChatCompletionStream({
+      config,
+      messages: historyDialog.value,
+      result,
+      historyDialog,
+      errorIssue,
+      loading,
+      maxTokens: settingForm.value.deepseekMaxTokens,
+      temperature: settingForm.value.deepseekTemperature,
+      model: settingForm.value.deepseekModelSelect
+    })
   } else {
     ElMessage.error('Set API Key or Access Token first')
     return
@@ -566,7 +595,8 @@ function checkApiKey() {
     apiKey: settingForm.value.officialAPIKey,
     azureAPIKey: settingForm.value.azureAPIKey,
     geminiAPIKey: settingForm.value.geminiAPIKey,
-    groqAPIKey: settingForm.value.groqAPIKey
+    groqAPIKey: settingForm.value.groqAPIKey,
+    deepseekAPIKey: settingForm.value.deepseekAPIKey
   }
   if (!checkAuth(auth)) {
     ElMessage.error('Set API Key or Access Token first')
@@ -601,7 +631,6 @@ async function continueChat() {
           role: 'user',
           content: 'continue'
         })
-
         await API.official.createChatCompletionStream({
           config: API.official.setConfig(
             settingForm.value.officialAPIKey,
@@ -708,6 +737,27 @@ async function continueChat() {
           loading,
           temperature: settingForm.value.ollamaTemperature
         })
+        break
+      case 'deepseek':
+        historyDialog.value.push({
+          role: 'user',
+          content: 'continue'
+        })
+        await API.deepseek.createChatCompletionStream({
+          config: API.deepseek.setConfig(
+            settingForm.value.deepseekAPIKey,
+            settingForm.value.deepseekBasePath
+          ),
+          messages: historyDialog.value,
+          result,
+          historyDialog,
+          errorIssue,
+          loading,
+          maxTokens: settingForm.value.deepseekMaxTokens,
+          temperature: settingForm.value.deepseekTemperature,
+          model: settingForm.value.deepseekModelSelect
+        })
+        break
     }
   } catch (error) {
     result.value = String(error)

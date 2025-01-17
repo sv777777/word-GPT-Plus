@@ -4,7 +4,8 @@ import {
   availableModelsForGemini,
   availableModelsForGroq,
   availableModelsForOllama,
-  languageMap
+  languageMap,
+  supportedPlatforms
 } from './constant'
 
 export interface Auth {
@@ -19,6 +20,7 @@ export function checkAuth(auth: Auth): boolean {
       (auth.type === 'azure' && !!auth.azureAPIKey) ||
       (auth.type === 'gemini' && !!auth.geminiAPIKey) ||
       (auth.type === 'groq' && !!auth.groqAPIKey) ||
+      (auth.type === 'deepseek' && !!auth.deepseekAPIKey) ||
       auth.type === 'ollama')
   )
 }

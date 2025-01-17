@@ -4,6 +4,7 @@ import common from './common'
 import gemini from './gemini'
 import groq from './groq'
 import ollama from './ollama'
+import deepseek from './deepseek'
 
 export default {
   official,
@@ -11,5 +12,6 @@ export default {
   gemini,
   groq,
   common,
-  ollama
+  ollama,
+  deepseek
 }

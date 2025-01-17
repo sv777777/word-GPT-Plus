@@ -7,33 +7,13 @@ function insertResult(result: Ref<string>, insertType: Ref<string>): void {
     .split('\n')
   switch (insertType.value) {
     case 'replace':
-      Word.run(async context => {
-        const range = context.document.getSelection()
-        range.insertText(paragraph[0], 'Replace')
-        for (let i = paragraph.length - 1; i > 0; i--) {
-          range.insertParagraph(paragraph[i], 'After')
-        }
-        await context.sync()
-      })
+      console.log('Replace:', paragraph.join('\n'))
       break
     case 'append':
-      Word.run(async context => {
-        const range = context.document.getSelection()
-        range.insertText(paragraph[0], 'End')
-        for (let i = paragraph.length - 1; i > 0; i--) {
-          range.insertParagraph(paragraph[i], 'After')
-        }
-        await context.sync()
-      })
+      console.log('Append:', paragraph.join('\n'))
       break
     case 'newLine':
-      Word.run(async context => {
-        const range = context.document.getSelection()
-        for (let i = paragraph.length - 1; i >= 0; i--) {
-          range.insertParagraph(paragraph[i], 'After')
-        }
-        await context.sync()
-      })
+      console.log('New Line:', paragraph.join('\n'))
       break
     case 'NoAction':
       break

@@ -1,3 +1,11 @@
+export type supportedPlatforms =
+  | 'official'
+  | 'azure'
+  | 'gemini'
+  | 'ollama'
+  | 'groq'
+  | 'deepseek'
+
 export const languageMap: IStringKeyMap = {
   en: 'English',
   es: 'Español',
@@ -48,7 +56,8 @@ export const availableAPIs: IStringKeyMap = {
   azure: 'azure',
   gemini: 'gemini',
   ollama: 'ollama',
-  groq: 'groq'
+  groq: 'groq',
+  deepseek: 'deepseek'
 }
 
 // official API 可用的模型
@@ -57,22 +66,15 @@ export const availableModels: IStringKeyMap = {
   'gpt-4o-mini': 'gpt-4o-mini',
   'o1-preview': 'o1-preview',
   'o1-mini': 'o1-mini',
-  'gpt-3.5': 'gpt-3.5-turbo',
-  'gpt-3.5-turbo-1106': 'gpt-3.5-turbo-1106',
-  gpt4: 'gpt-4',
-  'gpt-4-turbo': 'gpt-4-turbo',
-  'gpt-4-turo-preview': 'gpt-4-turo-preview',
-  'gpt4-0613': 'gpt-4-0613'
+  'deepseek-chat': 'deepseek-chat'
 }
 
 // Gemini API 可用的模型
 export const availableModelsForGemini: IStringKeyMap = {
   'gemini-1.5-flash': 'gemini-1.5-flash',
   'gemini-1.5-flash-8b': 'gemini-1.5-flash-8b',
-  'gemini-1.0-pro': 'gemini-1.0-pro',
   'gemini-1.5-pro': 'gemini-1.5-pro',
-  'gemini-exp-1114': 'gemini-exp-1114',
-  aqa: 'aqa'
+  'gemini-exp-1114': 'gemini-exp-1114'
 }
 
 // Ollama API 可用的模型

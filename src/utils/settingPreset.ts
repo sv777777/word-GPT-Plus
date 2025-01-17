@@ -49,6 +49,11 @@ export type SettingNames =
   | 'groqMaxTokens'
   | 'groqModelSelect'
   | 'groqCustomModel'
+  | 'deepseekAPIKey'
+  | 'deepseekBasePath'
+  | 'deepseekTemperature'
+  | 'deepseekMaxTokens'
+  | 'deepseekModelSelect'
 
 type keyoflocalStorageKey = keyof typeof localStorageKey
 
@@ -178,5 +183,19 @@ export const settingPreset: Record<SettingNames, ISettingOption> = {
     optionLists.groqModelList,
     availableModelsForGroq
   ),
-  groqCustomModel: defaultInputSetting
+  groqCustomModel: defaultInputSetting,
+  deepseekAPIKey: defaultInputSetting,
+  deepseekBasePath: inputSetting('https://api.deepseek.com/v1'),
+  deepseekTemperature: inputNumSetting(
+    0.7,
+    'deepseekTemperature',
+    'temperature'
+  ),
+  deepseekMaxTokens: inputNumSetting(800, 'deepseekMaxTokens', 'maxTokens'),
+  deepseekModelSelect: selectSetting(
+    availableModels['deepseek-chat'],
+    'deepseekModel',
+    optionLists.officialModelList,
+    availableModels
+  )
 }

@@ -5,19 +5,73 @@ function insertResult(result: Ref<string>, insertType: Ref<string>): void {
     .replace(/\n+/g, '\n')
     .replace(/\r+/g, '\n')
     .split('\n')
-  switch (insertType.value) {
-    case 'replace':
-      console.log('Replace:', paragraph.join('\n'))
-      break
-    case 'append':
-      console.log('Append:', paragraph.join('\n'))
-      break
-    case 'newLine':
-      console.log('New Line:', paragraph.join('\n'))
-      break
-    case 'NoAction':
-      break
-  }
+
+  const text = paragraph.join('\n')
+
+  Office.context.document.setSelectedDataAsync(
+    text,
+    {
+      coercionType: Office.CoercionType.Text,
+      asyncContext: null
+    },
+    asyncResult => {
+      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        console.error('Failed to insert text:', asyncResult.error.message)
+        return
+      }
+
+      switch (insertType.value) {
+        case 'replace':
+          Office.context.document.getSelectedDataAsync(
+            Office.CoercionType.Text,
+            asyncResult => {
+              if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                const newText = asyncResult.value ? text : text
+                Office.context.document.setSelectedDataAsync(newText, {
+                  coercionType: Office.CoercionType.Text,
+                  asyncContext: null
+                })
+              }
+            }
+          )
+          break
+        case 'append':
+          Office.context.document.getSelectedDataAsync(
+            Office.CoercionType.Text,
+            asyncResult => {
+              if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                const newText = asyncResult.value
+                  ? asyncResult.value + '\n' + text
+                  : text
+                Office.context.document.setSelectedDataAsync(newText, {
+                  coercionType: Office.CoercionType.Text,
+                  asyncContext: null
+                })
+              }
+            }
+          )
+          break
+        case 'newLine':
+          Office.context.document.getSelectedDataAsync(
+            Office.CoercionType.Text,
+            asyncResult => {
+              if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+                const newText = asyncResult.value
+                  ? asyncResult.value + '\n\n' + text
+                  : text
+                Office.context.document.setSelectedDataAsync(newText, {
+                  coercionType: Office.CoercionType.Text,
+                  asyncContext: null
+                })
+              }
+            }
+          )
+          break
+        case 'NoAction':
+          break
+      }
+    }
+  )
 }
 
 export default {

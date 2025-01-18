@@ -42,5 +42,6 @@ export enum localStorageKey {
   // deepseek api
   deepseekTemperature = 'deepseekTemperature',
   deepseekMaxTokens = 'deepseekMaxTokens',
-  deepseekModel = 'deepseekModel'
+  deepseekModel = 'deepseekModel',
+  deepseekCustomModel = 'deepseekCustomModel'
 }

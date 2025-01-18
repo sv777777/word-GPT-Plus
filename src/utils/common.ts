@@ -4,6 +4,7 @@ import {
   availableModelsForGemini,
   availableModelsForGroq,
   availableModelsForOllama,
+  availableModelsForDeepseek,
   languageMap,
   supportedPlatforms
 } from './constant'
@@ -63,11 +64,20 @@ export const optionLists = {
   officialModelList: getOptionList(availableModels),
   geminiModelList: getOptionList(availableModelsForGemini),
   ollamaModelList: getOptionList(availableModelsForOllama),
-  groqModelList: getOptionList(availableModelsForGroq)
+  groqModelList: getOptionList(availableModelsForGroq),
+  deepseekModelList: getOptionList(availableModelsForDeepseek)
 }
 
 export function getLabel(key: string) {
-  return `${key}Label`
+  const labelMap: Record<string, string> = {
+    deepseekAPIKey: 'API Key',
+    deepseekBasePath: 'Forward domain',
+    deepseekTemperature: 'Temperature',
+    deepseekMaxTokens: 'Max tokens',
+    deepseekModelSelect: 'Model',
+    deepseekCustomModel: 'Custom Model'
+  }
+  return labelMap[key] || `${key}Label`
 }
 
 export function getPlaceholder(key: string) {

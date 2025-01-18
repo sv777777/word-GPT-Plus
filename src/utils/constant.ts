@@ -65,8 +65,7 @@ export const availableModels: IStringKeyMap = {
   'gpt-4o': 'gpt-4o',
   'gpt-4o-mini': 'gpt-4o-mini',
   'o1-preview': 'o1-preview',
-  'o1-mini': 'o1-mini',
-  'deepseek-chat': 'deepseek-chat'
+  'o1-mini': 'o1-mini'
 }
 
 // Gemini API 可用的模型
@@ -74,7 +73,8 @@ export const availableModelsForGemini: IStringKeyMap = {
   'gemini-1.5-flash': 'gemini-1.5-flash',
   'gemini-1.5-flash-8b': 'gemini-1.5-flash-8b',
   'gemini-1.5-pro': 'gemini-1.5-pro',
-  'gemini-exp-1114': 'gemini-exp-1114'
+  'gemini-exp-1114': 'gemini-exp-1114',
+  'gemini-2.0-flash-exp': 'gemini-2.0-flash-exp'
 }
 
 // Ollama API 可用的模型
@@ -112,6 +112,12 @@ export const availableModelsForGroq: IStringKeyMap = {
   'llama3-8b-8192': 'llama3-8b-8192',
   'mixtral-8x7b-32768': 'mixtral-8x7b-32768',
   'whisper-large-v3': 'whisper-large-v3'
+}
+
+export const availableModelsForDeepseek: IStringKeyMap = {
+  'deepseek-chat': 'deepseek-chat',
+  'deepseek-coder': 'deepseek-coder',
+  'deepseek-math': 'deepseek-math'
 }
 
 export const buildInPrompt = {

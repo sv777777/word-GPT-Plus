@@ -4,7 +4,8 @@ import {
   availableModels,
   availableModelsForGemini,
   availableModelsForGroq,
-  availableModelsForOllama
+  availableModelsForOllama,
+  availableModelsForDeepseek
 } from './constant'
 import { localStorageKey } from './enum'
 
@@ -54,6 +55,7 @@ export type SettingNames =
   | 'deepseekTemperature'
   | 'deepseekMaxTokens'
   | 'deepseekModelSelect'
+  | 'deepseekCustomModel'
 
 type keyoflocalStorageKey = keyof typeof localStorageKey
 
@@ -193,9 +195,10 @@ export const settingPreset: Record<SettingNames, ISettingOption> = {
   ),
   deepseekMaxTokens: inputNumSetting(800, 'deepseekMaxTokens', 'maxTokens'),
   deepseekModelSelect: selectSetting(
-    availableModels['deepseek-chat'],
+    availableModelsForDeepseek['deepseek-chat'],
     'deepseekModel',
-    optionLists.officialModelList,
-    availableModels
-  )
+    optionLists.deepseekModelList,
+    availableModelsForDeepseek
+  ),
+  deepseekCustomModel: inputSetting('', 'deepseekCustomModel')
 }

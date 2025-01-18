@@ -69,14 +69,7 @@ export const optionLists = {
 }
 
 export function getLabel(key: string) {
-  const labelMap: Record<string, string> = {
-    deepseekAPIKey: 'API Key',
-    deepseekBasePath: 'Forward domain',
-    deepseekTemperature: 'Temperature',
-    deepseekMaxTokens: 'Max tokens',
-    deepseekModelSelect: 'Model',
-    deepseekCustomModel: 'Custom Model'
-  }
+  const labelMap: Record<string, string> = {}
   return labelMap[key] || `${key}Label`
 }
 

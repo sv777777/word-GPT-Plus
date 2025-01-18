@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { SettingNames, settingPreset } from './settingPreset'
 
 function useSettingForm() {
@@ -26,6 +26,15 @@ function useSettingForm() {
       localStorage.setItem('api', 'gemini')
     }
   })
+
+  // 添加对replyLanguage的统一监听
+  watch(
+    () => settingForm.value.replyLanguage,
+    newVal => {
+      localStorage.setItem('replyLanguage', newVal)
+    }
+  )
+
   return { settingForm, settingFormKeys }
 }
 

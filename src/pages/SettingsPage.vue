@@ -104,19 +104,21 @@ const commonSettingList = ['localLanguage', 'replyLanguage', 'api']
 
 const addWatch = () => {
   settingFormKeys.forEach(key => {
-    watch(
-      () => settingForm.value[key],
-      () => {
-        if (settingPreset[key].saveFunc) {
-          settingPreset[key].saveFunc(settingForm.value[key])
-          return
+    if (key !== 'replyLanguage') {
+      watch(
+        () => settingForm.value[key],
+        () => {
+          if (settingPreset[key].saveFunc) {
+            settingPreset[key].saveFunc(settingForm.value[key])
+            return
+          }
+          localStorage.setItem(
+            settingPreset[key].saveKey || key,
+            settingForm.value[key]
+          )
         }
-        localStorage.setItem(
-          settingPreset[key].saveKey || key,
-          settingForm.value[key]
-        )
-      }
-    )
+      )
+    }
   })
 }
 

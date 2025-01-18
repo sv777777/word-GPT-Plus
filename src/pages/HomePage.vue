@@ -224,7 +224,7 @@
 <script lang="ts" setup>
 import { ElMessage } from 'element-plus'
 import { CirclePlus, Remove } from '@element-plus/icons-vue'
-import { onBeforeMount, ref, watch } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
@@ -347,12 +347,9 @@ function handelPromptChange(val: string) {
 }
 
 const addWatch = () => {
-  watch(
-    () => settingForm.value.replyLanguage,
-    () => {
-      localStorage.setItem('replyLanguage', settingForm.value.replyLanguage)
-    }
-  )
+  // 统一在settingForm中管理replyLanguage状态
+  settingForm.value.replyLanguage =
+    localStorage.getItem('replyLanguage') || 'en'
 }
 
 async function initData() {

@@ -1,5 +1,5 @@
 # 第一阶段：使用Node.js 18版本构建Vue项目
-FROM node:18-alpine3.19 as build-stage
+FROM node:18-alpine3.19 AS build-stage
 WORKDIR /app
 
 # 复制项目文件并安装依赖

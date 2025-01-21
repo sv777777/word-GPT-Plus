@@ -200,5 +200,5 @@ export const settingPreset: Record<SettingNames, ISettingOption> = {
     optionLists.deepseekModelList,
     availableModelsForDeepseek
   ),
-  deepseekCustomModel: inputSetting('', 'deepseekCustomModel')
+  deepseekCustomModel: inputSetting('deepseek-chat', 'deepseekCustomModel')
 }

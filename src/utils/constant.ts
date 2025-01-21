@@ -65,7 +65,8 @@ export const availableModels: IStringKeyMap = {
   'gpt-4o': 'gpt-4o',
   'gpt-4o-mini': 'gpt-4o-mini',
   'o1-preview': 'o1-preview',
-  'o1-mini': 'o1-mini'
+  'o1-mini': 'o1-mini',
+  o1: 'o1'
 }
 
 // Gemini API 可用的模型
@@ -118,7 +119,8 @@ export const availableModelsForGroq: IStringKeyMap = {
 export const availableModelsForDeepseek: IStringKeyMap = {
   'deepseek-chat': 'deepseek-chat',
   'deepseek-coder': 'deepseek-coder',
-  'deepseek-math': 'deepseek-math'
+  'deepseek-math': 'deepseek-math',
+  'deepseek-reasoner': 'deepseek-reasoner'
 }
 
 export const buildInPrompt = {

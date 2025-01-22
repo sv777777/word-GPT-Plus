@@ -349,7 +349,7 @@ function handelPromptChange(val: string) {
 const addWatch = () => {
   // 统一在settingForm中管理replyLanguage状态
   settingForm.value.replyLanguage =
-    localStorage.getItem('replyLanguage') || 'en'
+    localStorage.getItem('replyLanguage') || 'English'
 }
 
 async function initData() {

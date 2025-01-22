@@ -32,7 +32,7 @@ async function createChatCompletionStream(
       options.model = availableModels[options.model ?? '']
     }
     const requestConfig = {
-      model: options.model ?? 'gpt-3.5-turbo',
+      model: options.model ?? 'gpt-4o',
       messages: options.messages,
       temperature: options.temperature ?? 0.7,
       max_tokens: options.maxTokens ?? 800

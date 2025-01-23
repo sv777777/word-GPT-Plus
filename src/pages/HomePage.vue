@@ -231,7 +231,7 @@ import { useI18n } from 'vue-i18n'
 import API from '@/api'
 
 import { buildInPrompt } from '@/utils/constant'
-import { promptDbInstance } from '@/store/promtStore'
+import { promptDbInstance } from '@/store/promptStore'
 
 import { checkAuth } from '@/utils/common'
 import { localStorageKey } from '@/utils/enum'

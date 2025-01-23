@@ -10,14 +10,14 @@
           clearable
           size="small"
           :placeholder="t('homeSystemDescription')"
-          @blur="handelSystemPromptChange(systemPrompt)"
+          @blur="handleSystemPromptChange(systemPrompt)"
         />
         <span>
           <el-select
             v-model="systemPromptSelected"
             size="small"
             placeholder="Select a system prompt"
-            @change="handelSystemPromptChange"
+            @change="handleSystemPromptChange"
           >
             <el-option
               v-for="item in systemPromptList"
@@ -54,14 +54,14 @@
           clearable
           size="small"
           :placeholder="t('homePromptDescription')"
-          @blur="handelPromptChange(prompt)"
+          @blur="handlePromptChange(prompt)"
         />
         <span>
           <el-select
             v-model="promptSelected"
             size="small"
             placeholder="Select a prompt"
-            @change="handelPromptChange"
+            @change="handlePromptChange"
           >
             <el-option
               v-for="item in promptList"
@@ -99,7 +99,7 @@
         label="insertType"
         :option-list="insertTypeList"
         placeholder="insertTypePlaceholder"
-        @change="handelInsertTypeChange"
+        @change="handleInsertTypeChange"
       />
     </el-form>
     <div style="width: 100%">
@@ -109,7 +109,7 @@
         indeterminate
         :duration="5"
         status="warning"
-        style="widows: 100%"
+        style="width: 100%"
       />
     </div>
     <el-button-group class="input-group" style="margin-top: 5px">
@@ -178,7 +178,7 @@
         v-model="result"
         type="textarea"
         autosize
-        :row="5"
+        :rows="5"
         :aria-placeholder="t('result')"
       />
     </div>
@@ -320,7 +320,7 @@ async function removePrompt() {
   getPromptList()
 }
 
-function handelSystemPromptChange(val: string) {
+function handleSystemPromptChange(val: string) {
   systemPrompt.value = val
   localStorage.setItem(localStorageKey.defaultSystemPrompt, val)
 }
@@ -341,7 +341,7 @@ async function addPrompt() {
   getPromptList()
 }
 
-function handelPromptChange(val: string) {
+function handlePromptChange(val: string) {
   prompt.value = val
   localStorage.setItem(localStorageKey.defaultPrompt, val)
 }
@@ -370,7 +370,7 @@ async function initData() {
   }
 }
 
-function handelInsertTypeChange(val: insertTypes) {
+function handleInsertTypeChange(val: insertTypes) {
   insertType.value = val
   localStorage.setItem(localStorageKey.insertType, val)
 }

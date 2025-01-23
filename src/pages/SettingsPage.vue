@@ -9,7 +9,6 @@
       {{ t('settings') }}
     </el-row>
     <el-row class="setting-list" style="margin-top: 20px">
-      <el-col :span="20" :offset="2" />
       <el-row
         style="
           width: 100%;
@@ -107,7 +106,7 @@ const commonSettingList = ['localLanguage', 'replyLanguage', 'api']
 
 const addWatch = () => {
   settingFormKeys.forEach(key => {
-    if (key !== 'replyLanguage') {
+    if (key !== 'replyLanguage' && settingPreset[key]) {
       watch(
         () => settingForm.value[key],
         () => {
@@ -134,8 +133,9 @@ function backToHome() {
 }
 </script>
 
-<style lang="stylus">
-#setting
-  height 100%
-  overflow-y auto
+<style scoped>
+#setting {
+  height: 100%;
+  overflow-y: auto;
+}
 </style>

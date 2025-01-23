@@ -3,13 +3,13 @@
     <el-form label-position="left" label-width="70px">
       <el-form-item>
         <template #label>
-          <span>{{ $t('homeSystem') }}</span>
+          <span>{{ t('homeSystem') }}</span>
         </template>
         <el-input
           v-model="systemPrompt"
           clearable
           size="small"
-          :placeholder="$t('homeSystemDescription')"
+          :placeholder="t('homeSystemDescription')"
           @blur="handelSystemPromptChange(systemPrompt)"
         />
         <span>
@@ -46,14 +46,14 @@
       </el-form-item>
       <el-form-item>
         <template #label>
-          <span>{{ $t('homePrompt') }}</span>
+          <span>{{ t('homePrompt') }}</span>
         </template>
         <el-input
           v-model="prompt"
           autofocus
           clearable
           size="small"
-          :placeholder="$t('homePromptDescription')"
+          :placeholder="t('homePromptDescription')"
           @blur="handelPromptChange(prompt)"
         />
         <span>
@@ -122,7 +122,7 @@
         :disabled="loading"
         @click="performAction(item)"
       >
-        {{ $t(item) }}
+        {{ t(item) }}
       </el-button>
 
       <el-button
@@ -131,7 +131,7 @@
         size="small"
         @click="settings"
       >
-        {{ $t('settings') }}
+        {{ t('settings') }}
       </el-button>
     </el-button-group>
     <div
@@ -150,7 +150,7 @@
           :disabled="loading"
           @click="StartChat"
         >
-          {{ $t('start') }}
+          {{ t('start') }}
         </el-button>
         <el-button
           v-if="
@@ -169,7 +169,7 @@
           :disabled="loading"
           @click="continueChat"
         >
-          {{ $t('continue') }}
+          {{ t('continue') }}
         </el-button>
       </el-button-group>
     </div>
@@ -179,7 +179,7 @@
         type="textarea"
         autosize
         :row="5"
-        :aria-placeholder="$t('result')"
+        :aria-placeholder="t('result')"
       />
     </div>
     <HomePageAddDialog

@@ -6,7 +6,7 @@
       justify="center"
       style="font-size: 20px; color: black"
     >
-      {{ $t('settings') }}
+      {{ t('settings') }}
     </el-row>
     <el-row class="setting-list" style="margin-top: 20px">
       <el-col :span="20" :offset="2" />
@@ -26,7 +26,7 @@
           style="margin-bottom: 5px; width: 100%"
           @click="backToHome"
         >
-          {{ $t('backToHome') }}
+          {{ t('backToHome') }}
         </el-button>
         <el-form label-position="left" size="default" label-width="50%">
           <SelectItem
@@ -87,6 +87,7 @@
 <script lang="ts" setup>
 import { onBeforeMount, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
 import { getLabel, getPlaceholder } from '@/utils/common'
 import { availableAPIs } from '@/utils/constant'
@@ -96,6 +97,8 @@ import InputItem from '@/components/InputItem.vue'
 import InputNumItem from '@/components/InputNumItem.vue'
 import SelectItem from '@/components/SelectItem.vue'
 import useSettingForm from '@/utils/settingForm'
+
+const { t } = useI18n()
 
 const router = useRouter()
 const { settingForm, settingFormKeys } = useSettingForm()

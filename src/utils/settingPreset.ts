@@ -147,7 +147,7 @@ export const settingPreset: Record<SettingNames, ISettingOption> = {
   officialTemperature: inputNumSetting(0.7, 'temperature', 'temperature'),
   officialMaxTokens: inputNumSetting(800, 'maxTokens', 'maxTokens'),
   officialModelSelect: selectSetting(
-    availableModels['gpt-3.5'],
+    availableModels['gpt-4o'],
     'model',
     optionLists.officialModelList,
     availableModels

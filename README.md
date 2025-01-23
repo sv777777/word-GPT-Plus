@@ -76,6 +76,7 @@ This service is built using Cloudflare Pages, domain name: [https://word.msq.pub
   - download: [manifest.xml](https://github.com/Kuingsmile/word-GPT-Plus/blob/master/release/instant-use/manifest.xml)
 
 2. Follow the [Sideload add-in](#sideload-add-in) instructions below to install the add-in.
+3. When using network deployment to access a large local model, cross-domain issues may occur. This is caused by security policies. For example, when using ollama to deploy a large model locally, you can solve this problem by setting the OLLAMA_ORIGIN variable.
 
 #### docker
 

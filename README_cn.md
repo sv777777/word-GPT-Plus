@@ -72,6 +72,7 @@ Groq的api key可以在[https://console.groq.com/keys](https://console.groq.com/
 1. 下载`manifest.xml`文件并保存到你的电脑上，例如 `C:\Users\username\Documents\WordGPT`.
   - 下载: [manifest.xml](https://github.com/Kuingsmile/word-GPT-Plus/blob/master/release/instant-use/manifest.xml)
 2. 按照下面的 [旁加载插件](#旁加载插件) 说明安装插件。
+3. 使用网络部署在访问本地大模型时会出现跨域问题，这是安全策略导致的。例如使用ollama在本地部署大模型，可通过设置OLLAMA_ORIGIN变量的方式进行解决。
 
 ### 自己搭建服务
 

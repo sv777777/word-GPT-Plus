@@ -193,7 +193,7 @@ export const settingPreset: Record<SettingNames, ISettingOption> = {
     'deepseekTemperature',
     'temperature'
   ),
-  deepseekMaxTokens: inputNumSetting(800, 'deepseekMaxTokens', 'maxTokens'),
+  deepseekMaxTokens: inputNumSetting(1024, 'deepseekMaxTokens', 'maxTokens'),
   deepseekModelSelect: selectSetting(
     availableModelsForDeepseek['deepseek-chat'],
     'deepseekModel',
